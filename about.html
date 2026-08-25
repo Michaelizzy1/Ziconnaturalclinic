@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Zicon Clinic</title>
+<meta name="description" content="Zicon Clinic has spent over a decade focused on Hepatitis B and C care in Abakaliki — natural, evidence-informed therapy built around the patient in front of us.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F7F5;
+    --surface:#FFFFFF;
+    --ink:#16241F;
+    --ink-soft:#4A5A54;
+    --teal:#0E5C52;
+    --teal-dark:#0A423B;
+    --sage:#7FA687;
+    --sage-tint:#E4EDE4;
+    --coral:#D6483F;
+    --coral-dark:#B93A32;
+    --line:#DDE3DD;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--teal); font-weight:600;
+  }
+  .eyebrow::before{content:''; width:16px; height:1px; background:var(--coral);}
+  :focus-visible{outline:2px solid var(--coral); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,247,245,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{position:relative; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:18px 20px;}
+  @media(min-width:640px){.nav{padding:18px 32px;}}
+  .logo{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:19px; flex-shrink:0;}
+  .logo-mark{
+    width:34px; height:34px; border-radius:9px;
+    background:var(--teal); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk'; font-weight:700; font-size:15px;
+    flex-shrink:0;
+  }
+  .nav-menu{list-style:none; display:none; flex-shrink:0;}
+  .nav-menu.open{
+    display:flex; flex-direction:column; align-items:stretch; gap:2px;
+    position:absolute; top:calc(100% + 1px); left:0; right:0;
+    background:#fff; border:1px solid var(--line); border-top:none;
+    padding:10px; border-radius:0 0 14px 14px;
+    box-shadow:0 20px 40px -20px rgba(0,0,0,0.2);
+  }
+  
+  .nav-menu.open li{width:100%;}
+  .nav-menu.open a{
+    display:block; padding:14px 16px; font-size:15.5px; font-weight:500; color:var(--ink);
+    border-radius:9px; transition:background .15s, color .15s;
+  }
+  .nav-menu.open a:hover{background:var(--sage-tint); color:var(--teal);}
+  .nav-menu a{font-size:14.5px; font-weight:500; color:var(--ink-soft); transition:color .15s; white-space:nowrap;}
+  .nav-menu a:hover{color:var(--teal);}
+  .nav-menu a[aria-current="page"]{color:var(--teal);}
+  .nav-cta{display:flex; align-items:center; gap:16px; flex-shrink:0;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:12px 24px; border-radius:999px; font-weight:600; font-size:14.5px;
+    border:1px solid transparent; cursor:pointer; transition:transform .15s, box-shadow .15s;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--coral); color:#fff; box-shadow:0 8px 20px -8px rgba(214,72,63,0.55);}
+  .btn-primary:hover{background:var(--coral-dark);}
+  .btn-ghost{background:transparent; border-color:var(--line); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--teal); color:var(--teal);}
+  .phone-pill{
+    display:none; align-items:center; gap:8px; font-family:'IBM Plex Mono'; font-size:13.5px; font-weight:500; color:var(--teal-dark); white-space:nowrap;
+  }
+  @media(min-width:1180px){.phone-pill{display:flex;}}
+  .menu-toggle{display:block; background:none; border:none; cursor:pointer; flex-shrink:0;}
+
+  /* ===== Section base ===== */
+  section{padding:88px 0;}
+  .section-head{max-width:620px; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px); margin-top:14px; line-height:1.15;}
+  .section-head p{color:var(--ink-soft); margin-top:14px; font-size:16px;}
+
+  /* ===== Page hero (lighter than home hero — no vital card) ===== */
+  .page-hero{padding:64px 0 20px;}
+  .page-hero .wrap{max-width:760px;}
+  .page-hero h1{font-size:clamp(32px,4.6vw,48px); line-height:1.1; margin:18px 0 20px;}
+  .page-hero h1 em{font-style:normal; color:var(--teal);}
+  .page-hero p.lead{font-size:17.5px; color:var(--ink-soft); max-width:600px;}
+
+  /* ===== Founder note (signature element) ===== */
+  .founder{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .founder-grid{display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:start;}
+  @media(max-width:900px){.founder-grid{grid-template-columns:1fr;}}
+  .doctor-card{
+    background:var(--bg); border:1px solid var(--line); border-radius:20px; overflow:hidden; position:sticky; top:96px;
+  }
+  @media(max-width:900px){.doctor-card{position:static;}}
+  .doctor-photo{
+    aspect-ratio:4/5; background:linear-gradient(160deg,var(--sage-tint),var(--teal) 130%);
+    display:flex; align-items:center; justify-content:center; color:#fff;
+    font-family:'Space Grotesk'; font-size:15px; text-align:center; padding:20px;
+  }
+  .doctor-info{padding:20px 22px;}
+  .doctor-info .name{font-family:'Space Grotesk'; font-weight:600; font-size:19px;}
+  .doctor-info .role{font-family:'IBM Plex Mono'; font-size:12.5px; color:var(--teal); margin-top:4px;}
+  .doctor-facts{list-style:none; margin-top:16px; padding-top:16px; border-top:1px solid var(--line); display:grid; gap:14px;}
+  .doctor-facts li{display:flex; flex-direction:column; gap:4px;}
+  .doctor-facts li span{font-family:'IBM Plex Mono'; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-soft);}
+  .doctor-facts li strong{font-size:14px; font-weight:600; color:var(--ink); line-height:1.35;}
+  .letter{padding-top:6px;}
+  .letter .mark{
+    font-family:'Space Grotesk'; font-size:64px; line-height:0.6; color:var(--sage); display:block; margin-bottom:6px;
+  }
+  .letter p{font-size:16.5px; color:var(--ink-soft); margin-bottom:18px; max-width:640px;}
+  .letter p.lede{font-size:18.5px; color:var(--ink); font-family:'Space Grotesk'; font-weight:500; line-height:1.4;}
+  .signature{margin-top:28px; padding-top:20px; border-top:1px solid var(--line);}
+  .signature .sig-name{font-family:'Space Grotesk'; font-weight:700; font-size:17px;}
+  .signature .sig-role{font-family:'IBM Plex Mono'; font-size:12px; color:var(--ink-soft); margin-top:3px; text-transform:uppercase; letter-spacing:.06em;}
+
+  /* ===== Values grid ===== */
+  .value-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  @media(max-width:960px){.value-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.value-grid{grid-template-columns:1fr;}}
+  .value-card{background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:26px 22px; transition:border-color .2s, transform .2s;}
+  .value-card:hover{border-color:var(--teal); transform:translateY(-3px);}
+  .value-index{font-family:'IBM Plex Mono'; font-size:12px; color:var(--sage); font-weight:600; letter-spacing:.05em;}
+  .value-card h3{font-size:16.5px; margin:12px 0 8px;}
+  .value-card p{font-size:14px; color:var(--ink-soft);}
+
+  /* ===== Journey timeline ===== */
+  .journey{background:var(--surface); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .journey-track{display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative;}
+  @media(max-width:860px){.journey-track{grid-template-columns:1fr; gap:32px;}}
+  .journey-track::before{
+    content:''; position:absolute; top:9px; left:0; right:0; height:2px;
+    background:repeating-linear-gradient(to right, var(--sage) 0 6px, transparent 6px 13px);
+  }
+  @media(max-width:860px){.journey-track::before{top:0; bottom:0; left:9px; right:auto; width:2px; height:auto;
+    background:repeating-linear-gradient(to bottom, var(--sage) 0 6px, transparent 6px 13px);}}
+  .journey-step{position:relative; padding-right:24px;}
+  @media(max-width:860px){.journey-step{padding-left:32px; padding-right:0;}}
+  .journey-dot{width:20px; height:20px; border-radius:50%; background:var(--teal); box-shadow:0 0 0 5px var(--surface); position:relative; z-index:1; margin-bottom:18px;}
+  @media(max-width:860px){.journey-dot{position:absolute; left:0; top:2px; margin-bottom:0;}}
+  .journey-step .stage{font-family:'IBM Plex Mono'; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--teal); font-weight:600; display:block; margin-bottom:6px;}
+  .journey-step h3{font-size:17px; margin-bottom:8px;}
+  .journey-step p{font-size:14px; color:var(--ink-soft);}
+
+  /* ===== CTA band ===== */
+  .cta-band{
+    background:var(--teal-dark); color:#fff; border-radius:24px; padding:56px 48px;
+    display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap;
+  }
+  .cta-band h2{color:#fff; font-size:clamp(24px,3vw,32px); max-width:420px;}
+  .cta-band p{color:#B9CFC9; margin-top:10px; max-width:420px; font-size:15px;}
+  .cta-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn-light{background:#fff; color:var(--teal-dark);}
+  .btn-light:hover{background:#EAF1EF;}
+  .btn-outline-light{border:1px solid rgba(255,255,255,0.35); color:#fff;}
+  .btn-outline-light:hover{border-color:#fff;}
+
+  /* ===== Floating contact ===== */
+  .float-contact{position:fixed; right:20px; bottom:20px; z-index:60; display:flex; flex-direction:column; gap:12px; align-items:flex-end;}
+  .float-btn{
+    width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    color:#fff; box-shadow:0 10px 24px -8px rgba(0,0,0,0.35); transition:transform .15s;
+  }
+  .float-btn:hover{transform:scale(1.07);}
+  .float-btn.whatsapp{background:#25D366;}
+  .float-btn.call{background:var(--coral);}
+
+  /* ===== Footer ===== */
+  footer{background:var(--ink); color:#D8DEDC; padding-top:64px;}
+  .footer-top{border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:48px;}
+  .footer-grid{display:grid; grid-template-columns:1.3fr 0.9fr 1fr 1.1fr; gap:32px;}
+  @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr; gap:40px 24px;}}
+  @media(max-width:560px){.footer-grid{grid-template-columns:1fr; gap:36px;}}
+  footer h4{
+    font-family:'IBM Plex Mono'; color:#fff; font-size:12px; text-transform:uppercase; letter-spacing:.08em;
+    margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-logo{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:19px; color:#fff; margin-bottom:14px;}
+  footer p.desc{font-size:14px; color:#9CA8A4; line-height:1.6; max-width:260px; margin-bottom:22px;}
+  .footer-social{display:flex; gap:10px;}
+  .footer-social a{
+    width:34px; height:34px; border-radius:50%; border:1px solid rgba(255,255,255,0.15);
+    display:flex; align-items:center; justify-content:center; color:#B7C0BD; transition:border-color .15s, color .15s;
+  }
+  .footer-social a:hover{border-color:var(--sage); color:#fff;}
+  footer ul{list-style:none; display:grid; gap:13px;}
+  footer ul li{display:flex; align-items:flex-start; gap:10px; font-size:14px; color:#B7C0BD; line-height:1.4;}
+  footer ul li svg{flex-shrink:0; margin-top:2px; color:var(--sage);}
+  footer ul a{color:inherit; transition:color .15s;}
+  footer ul a:hover{color:#fff;}
+  .footer-bottom{padding:22px 0; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:6px; font-size:13px; color:#7C8884;}
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark">ZC</span>
+      Zicon Clinic
+    </a>
+    <ul class="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <span class="phone-pill">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +234 813 652 0201
+      </span>
+      <button class="menu-toggle" aria-label="Menu" aria-expanded="false">
+        <svg class="icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        <svg class="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">About Zicon Clinic</span>
+      <h1>A clinic built around <em>one</em> condition, and the patients living with it.</h1>
+      <p class="lead">For over a decade, Zicon Clinic has focused on Hepatitis B and C care in Abakaliki — pairing natural, evidence-informed therapy with the kind of continuity that comes from treating one thing closely, not everything at once.</p>
+    </div>
+  </section>
+
+  <section class="founder">
+    <div class="wrap founder-grid">
+      <div class="doctor-card reveal">
+        <div class="doctor-photo">Dr. Shadrach Ngwuta<br>— photo —</div>
+        <div class="doctor-info">
+          <div class="name">Dr. Shadrach Ngwuta</div>
+          <div class="role">Founder &amp; Chief Executive Officer</div>
+          <ul class="doctor-facts">
+            <li><span>Practice focus</span><strong>Hepatitis B &amp; C, liver health</strong></li>
+            <li><span>Years in practice</span><strong>12+</strong></li>
+            <li><span>Patients supported</span><strong>3,000+</strong></li>
+            <li><span>Consultations</span><strong>By appointment, 24/7 emergency line</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="letter reveal">
+        <span class="mark">"</span>
+        <p class="lede">Most patients come to us after being told to manage a diagnosis for life. Our job is to sit with that, take it seriously, and build a plan around the person — not the paperwork.</p>
+        <p>Zicon Clinic started from a simple observation: people living with Hepatitis B and C needed somewhere that treated the condition as an ongoing relationship, not a single appointment. That's shaped everything since — from how we run consultations to how long we stay in touch after treatment begins.</p>
+        <p>We combine natural, holistic therapies with attentive medical monitoring, and we're upfront about what a treatment plan can and can't promise. Every patient's course is different, so every plan is built from their diagnosis, their liver function, and how they respond over time — not a fixed protocol applied to everyone who walks in.</p>
+        <p>That's the standard we hold ourselves to, and it's why patients tend to stay with us well past their first visit.</p>
+        <div class="signature">
+          <div class="sig-name">Dr. Shadrach Ngwuta</div>
+          <div class="sig-role">Founder &amp; CEO, Zicon Clinic</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="values">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">What Guides Our Care</span>
+        <h2>Four principles behind every treatment plan.</h2>
+      </div>
+      <div class="value-grid">
+        <div class="value-card reveal">
+          <span class="value-index">01</span>
+          <h3>Root-cause focus</h3>
+          <p>We look past symptoms to what's driving them — liver function, immune response, and lifestyle factors — rather than treating each flare-up in isolation.</p>
+        </div>
+        <div class="value-card reveal">
+          <span class="value-index">02</span>
+          <h3>Personalized plans</h3>
+          <p>No two patients receive an identical protocol. Your plan is built around your diagnosis, your progress, and how your body responds along the way.</p>
+        </div>
+        <div class="value-card reveal">
+          <span class="value-index">03</span>
+          <h3>Plain-language transparency</h3>
+          <p>You'll always know what's in your treatment plan and why — explained in terms you can act on, not medical shorthand.</p>
+        </div>
+        <div class="value-card reveal">
+          <span class="value-index">04</span>
+          <h3>Confidentiality</h3>
+          <p>Your diagnosis and records stay private, discussed only between you and your care team, at a pace you're comfortable with.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="journey">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Our Journey</span>
+        <h2>From a single consulting room to a full care program.</h2>
+      </div>
+      <div class="journey-track">
+        <div class="journey-step reveal">
+          <div class="journey-dot"></div>
+          <span class="stage">The Start</span>
+          <h3>A focused practice</h3>
+          <p>Zicon Clinic opens in Abakaliki with a narrow focus: natural, patient-centered care for Hepatitis B and C.</p>
+        </div>
+        <div class="journey-step reveal">
+          <div class="journey-dot"></div>
+          <span class="stage">Building the Program</span>
+          <h3>Structured treatment paths</h3>
+          <p>Consultation, diagnosis, and personalized planning are formalized into a consistent process for every patient.</p>
+        </div>
+        <div class="journey-step reveal">
+          <div class="journey-dot"></div>
+          <span class="stage">Growing Reach</span>
+          <h3>Care beyond the clinic walls</h3>
+          <p>Online appointments and a 24/7 emergency line open the practice to patients well beyond Abakaliki.</p>
+        </div>
+        <div class="journey-step reveal">
+          <div class="journey-dot"></div>
+          <span class="stage">Today</span>
+          <h3>3,000+ patients supported</h3>
+          <p>A dedicated care team now supports thousands of patients through diagnosis, treatment, and long-term follow-up.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding-top:0;">
+    <div class="wrap">
+      <div class="cta-band">
+        <div>
+          <h2>Ready to start your treatment?</h2>
+          <p>Book an online appointment or call us directly — our team is available 24/7 for emergencies.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="tel:+2348136520201" class="btn btn-light">Call +234 813 652 0201</a>
+          <a href="mailto:treatit395@gmail.com" class="btn btn-outline-light">Email Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="float-contact">
+  <a href="https://wa.me/2348136520201" class="float-btn whatsapp" aria-label="Chat on WhatsApp" target="_blank" rel="noopener">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.14h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.37c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.82 2.42a8.15 8.15 0 0 1 2.41 5.81c0 4.54-3.69 8.22-8.21 8.22zm4.5-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.53.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.42-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.54c.12.17 1.73 2.64 4.2 3.7.59.25 1.05.4 1.4.52.59.19 1.13.16 1.55.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.14-1.18-.06-.11-.23-.17-.48-.29z"/></svg>
+  </a>
+  <a href="tel:+2348136520201" class="float-btn call" aria-label="Call Zicon Clinic">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo"><span class="logo-mark">ZC</span>Zicon Clinic</div>
+          <p class="desc">Natural, evidence-informed care for Hepatitis B &amp; C, detox, and long-term liver health.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+            <a href="https://wa.me/2348136520201" aria-label="WhatsApp"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4>Useful Links</h4>
+          <ul>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg><a href="about.html">About Us</a></li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg><a href="services.html">Services</a></li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg><a href="index.html#testimonials">Reviews</a></li>
+            <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 6l6 6-6 6"/></svg><a href="contact.html">Book Appointment</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Working Hours</h4>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Mon – Fri: 8:00 AM – 7:00 PM</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Sat – Sun: 8:00 AM – 5:00 PM</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>24/7 emergency line</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer-contact">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+2348136520201">+234 813 652 0201</a></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+2348036383810">0803 638 3810</a></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg><a href="mailto:treatit395@gmail.com">treatit395@gmail.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Zicon Clinic. All rights reserved.</span>
+      <span>Designed for a natural approach to lasting health.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  els.forEach(el => io.observe(el));
+
+  const toggle = document.querySelector('.menu-toggle');
+  const navList = document.querySelector('.nav-menu');
+  const iconOpen = toggle ? toggle.querySelector('.icon-open') : null;
+  const iconClose = toggle ? toggle.querySelector('.icon-close') : null;
+
+  function closeMenu(){
+    navList.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    iconOpen.style.display = 'block';
+    iconClose.style.display = 'none';
+  }
+  function openMenu(){
+    navList.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    iconOpen.style.display = 'none';
+    iconClose.style.display = 'block';
+  }
+
+  if(toggle){
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navList.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    navList.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+    document.addEventListener('click', (e) => {
+      if(navList.classList.contains('open') && !navList.contains(e.target) && e.target !== toggle){
+        closeMenu();
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
